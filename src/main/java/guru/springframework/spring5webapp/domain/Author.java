@@ -16,7 +16,7 @@ public class Author {
 
     private String lastName;
 
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "author")
     private Set<Books> books = new HashSet<>();
 
     public Author() {
