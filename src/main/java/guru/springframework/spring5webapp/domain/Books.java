@@ -12,14 +12,17 @@ public class Books {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ManyToOne
+    private Publisher publisher;
+
     private String title;
 
     private String isbn;
 
     @ManyToMany
-    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
+    @JoinTable(name = "author_books", joinColumns = @JoinColumn(name = "books_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors = new HashSet<>();
+    private Set<Author> author = new HashSet<>();
 
     public Books() {
     }
@@ -53,12 +56,20 @@ public class Books {
         this.isbn = isbn;
     }
 
-    public Set<Author> getAuthors() {
-        return authors;
+    public Set<Author> getAuthor() {
+        return author;
     }
 
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
+    public void setAuthor(Set<Author> author) {
+        this.author = author;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     @Override
@@ -79,7 +90,8 @@ public class Books {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
-                ", authors=" + authors +
+                ", author=" + author +
+                ", publisher=" + publisher +
                 '}';
     }
 }
