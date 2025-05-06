@@ -90,8 +90,6 @@ public class Books {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
-                ", author=" + author +
-                ", publisher=" + publisher +
                 '}';
     }
 }
